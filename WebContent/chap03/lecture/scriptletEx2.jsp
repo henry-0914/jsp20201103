@@ -31,5 +31,37 @@ list.add("spring");
 list.add("dbms");
 
 %>
+
+<ul>
+<%
+for(String item : list) {
+%>	
+<li>
+<% out.print(item); %>
+</li>
+
+<%
+}
+%>
+
+
+</ul>
+
+<%
+boolean danger = false;
+%>
+<%
+if(danger) {
+
+%>
+<h1 class = "text-danger" > DANGER!!!</h1>
+<%
+}else {
+%>
+<h1 class = "text-info">INFO~~~</h1>
+<%
+}
+%>
+
 </body>
 </html>
