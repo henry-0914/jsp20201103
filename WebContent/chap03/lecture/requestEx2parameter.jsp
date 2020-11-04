@@ -29,7 +29,10 @@ String val1 = request.getParameter("id");
 String val2 = request.getParameter("pw");
 String val3 = request.getParameter("pw2");
 String val4 = request.getParameter("age");
-int val4int = Integer.valueOf(val4);
+int val4int = 0;
+if(val4 !=null) {
+	val4int = Integer.valueOf(val4);
+}
 String val5 = request.getParameter("date");
 %>
 id : <%= val1 %> <br />
