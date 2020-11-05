@@ -18,10 +18,15 @@
 <body>
 <form action ="">
 	live : <input type = "text" name = "live" /> <br>
-	age  : 20대 <input type="checkbox" name="age" value="20대" />
-           30대<input type="checkbox" name="age" value="30대" />
-           40대<input type="checkbox" name="age" value="40대" /> <br>
+	age  : 20~25세 <input type="checkbox" name="age" value="20~25세" />
+           26~30세<input type="checkbox" name="age" value="26~30세" />
+           31~36세<input type="checkbox" name="age" value="31~ 36세" /> <br>
 	job   : <input type = "text" name = "job" /> <br>
+	money : <input type = "number" name = "연봉" /> <br>
+	wight : 60키로 이하<input type = "checkbox" name = "wight" value= " 60키로 이하" />
+	        65키로 이하<input type = "checkbox" name = "wight" value= " 65키로 이하" />
+	        70키로 이하<input type = "checkbox" name = "wight" value= " 70키로 이하" />
+	        75키로 이상<input type = "checkbox" name = "wight" value= " 75키로 이상" /> <br>
 	high  : <input type = "number" name = "high" /> <br>
 	gender : 남자 <input type ="radio" name = "gender" value = "male" /> 
 			  여자 <input type = "radio" name = "gender" value = "female" /> <br>
@@ -36,12 +41,14 @@
 String live = request.getParameter("live");
 String[] age = request.getParameterValues("age");
 String job = request.getParameter("job");
+String money = request.getParameter("money");
+String[] wight = request.getParameterValues("wight");
 String high = request.getParameter("high");
 String gender = request.getParameter("gender");
 String[] family = request.getParameterValues("family");
 %>
 live: <%= live %> <br/>
-age : <br />
+age : 
 <%
 if(age != null) {
 for (int i = 0; i < age.length; i++) {
@@ -53,9 +60,21 @@ for (int i = 0; i < age.length; i++) {
 }
 %> <br />
 job : <%= job %> <br />
+money : <%= money %> <br />
+wight :
+<%
+if(wight != null) {
+for (int i = 0; i < wight.length; i++) {
+ out.print(wight[i]);
+ if (i != wight.length-1) {
+  out.print(", "); 
+ }
+}
+}
+
+%> <br/>
 gender : <%= gender %> <br/>
 family : 
-
 <%
 if(family != null) {
 for (int i = 0; i < family.length; i++) {
