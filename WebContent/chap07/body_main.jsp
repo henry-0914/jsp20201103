@@ -13,15 +13,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>bodyex2</h1>
+include 전 name 파라미터 값: <%= request.getParameter("name") %>
+<hr />
+<jsp:include page="body_sub.jsp">
+  <jsp:param value="최범균" name="name"/>
+</jsp:include>
+<hr />
 
-request 참조 값 : <%= System.identityHashCode(request) %>
-<br />
-<%= request instanceof HttpServletRequest %>
-<br />
-<%= request instanceof ServletRequestWrapper %>
-
-<jsp:include page="navbarEx2.jsp"></jsp:include>
-
+include 후 name 파라미터 값: <%= request.getParameter("name") %>
 </body>
+</html> 
 </html>
