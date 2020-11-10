@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.*"%>
 <% request.setCharacterEncoding("utf-8"); %>
+
+<%
+Cookie cookie = new Cookie("mycookie2", "myvalue2");
+cookie.setMaxAge(24*60*60);
+response.addCookie(cookie);
+
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +24,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-Cookie[] cookies = request.getCookies();
-for(Cookie cookie : cookies) {
-	%>
-	<%= cookie.getName() %> = <%= cookie.getValue() %>
-	<br/>
-	<%
-}
-%>
+<h1>쿠키 유효시간 하루</h1>
 </body>
 </html>

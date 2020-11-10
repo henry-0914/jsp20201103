@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.*"%>
 <% request.setCharacterEncoding("utf-8"); %>
+
+<%
+
+Cookie cookie = new Cookie("mycookie", "");
+cookie.setMaxAge(0);
+response.addCookie(cookie);
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +24,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-Cookie[] cookies = request.getCookies();
-for(Cookie cookie : cookies) {
-	%>
-	<%= cookie.getName() %> = <%= cookie.getValue() %>
-	<br/>
-	<%
-}
-%>
+<h1>쿠키 삭제</h1>
+
+
+
 </body>
 </html>

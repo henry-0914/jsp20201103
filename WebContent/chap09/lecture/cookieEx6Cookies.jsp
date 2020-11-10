@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.*"%>
 <% request.setCharacterEncoding("utf-8"); %>
+<%@ page import ="chap09.Cookies" %>
+
+<%
+Cookies cookies = new Cookies(request);
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +23,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-Cookie[] cookies = request.getCookies();
-for(Cookie cookie : cookies) {
-	%>
-	<%= cookie.getName() %> = <%= cookie.getValue() %>
-	<br/>
-	<%
-}
-%>
+mycookie 있는지 : <%= cookies.exists("mycookies") %>
+mycookie 의 값 : <%= cookies.getValue("mycookie") %>
 </body>
 </html>

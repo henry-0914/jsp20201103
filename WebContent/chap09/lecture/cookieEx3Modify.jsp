@@ -2,6 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.*"%>
 <% request.setCharacterEncoding("utf-8"); %>
+
+<%
+// 쿠키들을 읽어서 있으면 같은 name의 쿠키를 다시 만들어서 response에 다시 Add 해야 함
+Cookie[] cookies = request.getCookies();
+for(Cookie cookie : cookies) {
+	if(cookie.getName().equals("mycookie")) {
+		Cookie c = new Cookie("mycookie", "new-value");
+		response.addCookie(c);
+	}
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +27,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-Cookie[] cookies = request.getCookies();
-for(Cookie cookie : cookies) {
-	%>
-	<%= cookie.getName() %> = <%= cookie.getValue() %>
-	<br/>
-	<%
-}
-%>
+
 </body>
 </html>
