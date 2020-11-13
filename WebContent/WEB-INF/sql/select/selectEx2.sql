@@ -42,3 +42,23 @@ WHERE dno IN (10, 20);
 
 SELECT * FROM  employee
 WHERE dno NOT IN (20);
+
+SELECT ename FROM employee WHERE eno = 7499;
+
+
+SELECT LOC FROM DEPARTMENT WHERE DNO = 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
