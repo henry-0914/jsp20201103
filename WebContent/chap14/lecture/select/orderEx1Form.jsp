@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<%@ page import="chap14.EmployeeDao" %>
 <% request.setCharacterEncoding("utf-8"); %>
-<%
-String name = request.getParameter("name");
-if (name == null) {
-  name = ""; 
-}
-name = name.toUpperCase();
-List<String> list = EmployeeDao.getNameLike(name);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,25 +13,17 @@ List<String> list = EmployeeDao.getNameLike(name);
 <title>Insert title here</title>
 </head>
 <body>
-<h1>검색된 이름</h1>
-<%
-if (list.size() > 0) {
-%>
-  <ul>
-  <% 
-  for (String n : list) {
-  %>
-    <li><%= n %></li>
-  <% 
-  }
-  %>
-  </ul>
-<%
-} else {
-%>  
-<h2>검색된 이름 없음</h2>
-<%
-}
-%>
+<form action="orderEx1View.jsp">
+이름 : <input type="text" name="name" /> <br />
+정렬 : 
+<select name="order" id="">
+	<option value="1">안함</option>
+	<option value="2">오름차순</option>
+	<option value="3">내림차순</option>
+</select>
+<br />
+<input type="submit" value="검색" />
+
+</form>
 </body>
 </html>

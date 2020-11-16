@@ -1,15 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<%@ page import="chap14.EmployeeDao" %>
+<%@ page import="java.sql.*" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <%
-String name = request.getParameter("name");
-if (name == null) {
-  name = ""; 
+String sql = "SELECT salary FROM employee WHERE eno = 7499";
+String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+String user = "c##mydbms";
+String pw = "admin";
+int salary = 0;
+Class.forName("oracle.jdbc.driver.OracleDriver");
+try (Connection conn = DriverManager.getConnection(url, user, pw);
+    Statement stmt = conn.createStatement();) {
+  
+  ResultSet rs = stmt.executeQuery(sql);
+  
+  if (rs.next()) {
+    salary = rs.getInt("salary"); 
+  }
+} catch (Exception e) {
+  e.printStackTrace(); 
 }
-name = name.toUpperCase();
-List<String> list = EmployeeDao.getNameLike(name);
 %>
 
 <!DOCTYPE html>
@@ -23,25 +34,6 @@ List<String> list = EmployeeDao.getNameLike(name);
 <title>Insert title here</title>
 </head>
 <body>
-<h1>검색된 이름</h1>
-<%
-if (list.size() > 0) {
-%>
-  <ul>
-  <% 
-  for (String n : list) {
-  %>
-    <li><%= n %></li>
-  <% 
-  }
-  %>
-  </ul>
-<%
-} else {
-%>  
-<h2>검색된 이름 없음</h2>
-<%
-}
-%>
+<h1>salary : <%= salary %></h1>
 </body>
 </html>
